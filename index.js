@@ -10,18 +10,15 @@ var gameInterval = null;
 
 function checkCollision(rock) {
   const top = positionToInteger(rock.style.top)
-
   if (top > 360) {
     const dodgerLeftEdge = positionToInteger(DODGER.style.left)
     const dodgerRightEdge = dodgerLeftEdge + 40;
     const rockLeftEdge = positionToInteger(rock.style.left)
     const rockRightEdge = rockLeftEdge + 20;
-
     if ((rockLeftEdge < dodgerLeftEdge && rockRightEdge > dodgerLeftEdge) ||
  (rockLeftEdge >= dodgerLeftEdge && rockRightEdge <= dodgerRightEdge) ||
   ( rockLeftEdge <= dodgerRightEdge && rockRightEdge >= dodgerRightEdge)) 
-                {
-      return true
+      {return true
     }
   }
 }
@@ -43,13 +40,11 @@ function createRock(x) {
      } else {
         rock.remove()
      }
-     
    }
    window.requestAnimationFrame(moveRock)
    ROCKS.push(rock)
    return rock
 }
-
 
 function endGame() {
   clearInterval(gameInterval);
@@ -59,7 +54,6 @@ function endGame() {
 }
 
 function moveDodger(e) {
-   window.requestAnimationFrame(e)
  if(e.which===LEFT_ARROW){
    moveDodgerLeft()
    e.stopPropagation()
@@ -71,8 +65,6 @@ function moveDodger(e) {
 }
 
 function moveDodgerLeft() {
-/** This function should move DODGER to the left
-* (mabye 4 pixels?). Use window.requestAnimationFrame()!*/
    window.requestAnimationFrame(function() {
    const left = positionToInteger(DODGER.style.left)
       if (left > 0) {
@@ -81,8 +73,6 @@ function moveDodgerLeft() {
    })}
    
 function moveDodgerRight() {
-     /* This function should move DODGER to the right
-     * (mabye 4 pixels?). Use window.requestAnimationFrame()!*/
   window.requestAnimationFrame(function() {
   const left = positionToInteger(DODGER.style.left)
     if (left < 360) {
@@ -91,8 +81,6 @@ function moveDodgerRight() {
   })
 }
 
-/*** @param {string} p The position property
- * @returns {number} The position as an integer (without 'px')*/
 function positionToInteger(p) {
   return parseInt(p.split('px')[0]) || 0;
 }
